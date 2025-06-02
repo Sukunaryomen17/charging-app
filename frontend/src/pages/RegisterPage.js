@@ -9,16 +9,23 @@ export default function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await api.post('/auth/register', { email, password });
-      login(res.data.token); // Auto-login after registration
-      navigate('/dashboard');
-    } catch (err) {
-      alert('Registration failed');
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await api.post('/auth/register', { email, password });
+
+    
+    localStorage.setItem('token', res.data.token);
+
+    
+    login(res.data.token);
+
+    navigate('/dashboard');
+  } catch (err) {
+    alert('Registration failed');
+  }
+};
+
 
   return (
     <div>
