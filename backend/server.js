@@ -8,9 +8,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = ['https://charging-app-yccv.onrender.com'];
 // Middleware
 app.use(cors({
-  origin: '*'
+  origin: allowedOrigins,
+  credentials: true
 }));
 
 app.use(express.json());
