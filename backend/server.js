@@ -10,9 +10,9 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: 'https://charging-app-yccv.onrender.com',
-  credentials: true // Optional: only if using cookies/auth headers
+  origin: '*'
 }));
+
 app.use(express.json());
 
 // MongoDB connection
