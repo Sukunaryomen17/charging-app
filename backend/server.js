@@ -27,11 +27,16 @@ app.use('/api/stations', require('./routes/stationRoutes'));
 // Serve React static files in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/build')));
-  
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
-  });
+
+  try {
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+    });
+  } catch (err) {
+    console.error('❌ Error in wildcard route:', err.message);
+  }
 }
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
