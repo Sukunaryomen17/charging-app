@@ -21,7 +21,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 // API routes
 app.use('/api/users', require('./routes/authroutes'));
-app.use('/api/users', require('./routes/stationRoutes'));
+app.use('/api/stations', require('./routes/stationRoutes'));
 // Add your other API routes here...
 
 // Serve React static files in production
